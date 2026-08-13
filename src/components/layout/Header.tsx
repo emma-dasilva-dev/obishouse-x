@@ -6,7 +6,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
 
 const links = [
-  ["event", "#event"], ["experience", "#experience"], ["tickets", "#tickets"], ["partners", "#partners"],
+  ["event", "#event"], ["experience", "#experience"], ["tickets", "#tickets"],
 ] as const;
 
 export function Header() {
@@ -23,15 +23,14 @@ export function Header() {
   }, [open]);
   return <header className="site-header">
     <a href="#top" className="brand-lockup" aria-label="CTN All Stars — accueil">
-      <Image src="/images/brand/obis-house-logo.png" alt="Obi’s House" width={60} height={60} priority />
-      <span aria-hidden="true">×</span>
       <Image src="/images/brand/ctn-vibe-logo.png" alt="CTN Vibe" width={60} height={60} priority />
+      <span>CTN ALL STARS</span>
     </a>
     <nav className="desktop-nav" aria-label="Navigation principale">
       {links.map(([key, href]) => <a key={key} href={href}>{t.nav[key]}</a>)}
     </nav>
     <div className="desktop-actions"><LanguageSwitcher /><a className="nav-ticket" href="#tickets">{t.nav.tickets}</a></div>
-    <button className="menu-button" type="button" aria-expanded={open} aria-controls="mobile-menu" aria-label={t.menu.open} onClick={() => setOpen(true)}><span /><span /></button>
+    <button className="menu-button" type="button" aria-expanded={open} aria-controls="mobile-menu" aria-label={t.menu.open} onClick={() => setOpen((value) => !value)}><span /><span /><span /></button>
     <div className={`mobile-menu ${open ? "open" : ""}`} id="mobile-menu" aria-hidden={!open}>
       <div className="mobile-menu-top"><span>CTN ALL STARS</span><button ref={closeRef} type="button" aria-label={t.menu.close} onClick={() => setOpen(false)}>×</button></div>
       <nav aria-label="Navigation mobile">
@@ -41,4 +40,3 @@ export function Header() {
     </div>
   </header>;
 }
-

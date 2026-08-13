@@ -8,11 +8,7 @@ type LanguageContextValue = { language: Language; setLanguage: (language: Langua
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(() => {
-    if (typeof window === "undefined") return "fr";
-    const saved = window.localStorage.getItem("ctn-language");
-    return saved === "en" ? "en" : "fr";
-  });
+  const [language, setLanguageState] = useState<Language>("fr");
   const setLanguage = (next: Language) => {
     setLanguageState(next);
     window.localStorage.setItem("ctn-language", next);
