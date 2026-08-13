@@ -6,5 +6,17 @@ import { EventExperienceSection } from "@/components/sections/EventExperienceSec
 import { TicketSection } from "@/components/sections/TicketSection";
 
 export default function Home() {
-  return <><div id="top" /><Header /><main><HeroSection /><EventDetailsSection /><EventExperienceSection /><TicketSection /></main><Footer /></>;
+  return (
+    <>
+      <div id="top" />
+      <Header />
+      <main>
+        <HeroSection />
+        <EventDetailsSection />
+        <EventExperienceSection />
+        <TicketSection />
+      </main>
+      <Footer />
+    </>
+  );
 }
